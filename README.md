@@ -183,7 +183,10 @@ Rescaling training set helped with better results
 ![with adding augmentation](results/result_with_final.jpg)
 
 ### Learning curves
-
+#### Classification loss
 ![losses](./classification_loss.JPG)
+As we can see the loss function decreases over iterations. It gets stabilized after 300 iterations.
 
 ![losses](./mAP.JPG)
+The mean Average Precision keeps increasing w.r.t epochs. Even tho we achieved the highest precision
+at 3 epochs it is not stable. So we took the last model trained at the last eopoch as the best model.
