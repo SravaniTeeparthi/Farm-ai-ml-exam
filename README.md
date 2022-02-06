@@ -1,10 +1,24 @@
 # Farm-ai-ml-exam
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Farm-ai-ml-exam](#farm-ai-ml-exam)
+    - [Installation](#installation)
+    - [Dataset Preparation](#dataset-preparation)
+    - [Configuring the framework](#configuring-the-framework)
+    - [Resullts](#resullts)
+        - [Without data augmentation](#without-data-augmentation)
+        - [With data augmentation](#with-data-augmentation)
+        - [Learning curves](#learning-curves)
+
+<!-- markdown-toc end -->
 
 1. I used MMDetection (https://github.com/open-mmlab/mmdetection) for performing object detection.
 2. MMDetection is an open source object detection toolbox based on PyTorch.
 
 ## Installation
-```
+Here are the commands I used to install the library.
+```bash
 conda create -n openmmlab python=3.7 -y
 conda activate openmmlab
 conda install pytorch torchvision -c pytorch
@@ -13,7 +27,6 @@ mim install mmdet
 ```
 
 ## Dataset Preparation
-
 1. The dataset has to be reorganised into COCO format to run MMDetection
   - I first converted them to csv format and divided 80, 20 split for training and validation
   - Then I converetd them to coco format.
@@ -48,7 +61,7 @@ mim install mmdet
       }]
     ```
 
-## Preparing config file
+## Configuring the framework
 The next step is to prepare config file so that data can be loaded successfully.
    ```
     # The new config inherits a base config to highlight the necessary modification
@@ -85,10 +98,13 @@ The next step is to prepare config file so that data can be loaded successfully.
     # change working directory to save logs
     work_dir = '/mnt/ubuntu/home/sravani/Softwares/farm-ai/work_dir2/'
 
-  ```
+```
+## Results
+### Without data augmentation
 ![without adding augmentation](./results/result.jpg)
 
-Then I added in some augmentation parameters and here is the final result: The finetuning hyperparameters vary from the default schedule. It usually requires smaller learning rate and less training epochs
+### With data augmentation
+Then I added scaling to detect objects of different sizes. The results are displayed below.
 ```
 # The new config inherits a base config to highlight the necessary modification
 _base_ = '/home/vj/Software/mmdetection/configs/faster_rcnn/faster_rcnn_r101_fpn_1x_coco.py'
@@ -162,15 +178,11 @@ work_dir = '/mnt/ubuntu/home/sravani/Softwares/farm-ai/work_dir2/'
 
 
 ```
-training
-```
-python tools/train.py config_file
-```
 
 Rescaling training set helped with better results
 ![with adding augmentation](results/result_with_final.jpg)
 
-Here are some of the learning curves
+### Learning curves
 
 ![losses](./classification_loss.JPG)
 
