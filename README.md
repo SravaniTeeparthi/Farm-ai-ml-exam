@@ -189,4 +189,4 @@ As we can see the loss function decreases over iterations. It gets stabilized af
 
 ![losses](./mAP.JPG)
 The mean Average Precision keeps increasing w.r.t epochs. Even tho we achieved the highest precision
-at 3 epochs it is not stable. So we took the last model trained at the last eopoch as the best model.
+at 3 epochs it is not stable. So we took the last model trained at the last epoch as the best model.
