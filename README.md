@@ -1,4 +1,4 @@
-# Farm-hand ai-ml-exam
+# Farm-hand AI-ml-exam
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
